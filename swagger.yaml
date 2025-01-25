@@ -1,0 +1,212 @@
+openapi: 3.0.0
+info:
+  title: Laravel Job Application API
+  description: API do zarządzania ofertami pracy i aplikacjami użytkowników.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000/api
+    description: Lokalny serwer API
+
+paths:
+  /register:
+    post:
+      summary: Rejestracja użytkownika
+      description: Endpoint do rejestracji nowego użytkownika.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - signupEmail
+                - signupPassword
+                - signupPassword_confirmation
+                - role_id
+              properties:
+                signupEmail:
+                  type: string
+                  description: Email użytkownika.
+                  format: email
+                signupPassword:
+                  type: string
+                  description: Hasło użytkownika.
+                  format: password
+                signupPassword_confirmation:
+                  type: string
+                  description: Potwierdzenie hasła.
+                  format: password
+                role_id:
+                  type: integer
+                  description: ID roli użytkownika.
+      responses:
+        201:
+          description: Użytkownik zarejestrowany pomyślnie.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      username:
+                        type: string
+                      role_id:
+                        type: integer
+        422:
+          description: Błąd walidacji danych wejściowych.
+  /jobs:
+    post:
+      summary: Dodawanie oferty pracy
+      description: Endpoint umożliwia dodanie nowej oferty pracy.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - title
+                - company
+                - description
+                - location
+                - salary_from
+                - salary_to
+                - tags
+                - posted_by_user_id
+              properties:
+                title:
+                  type: string
+                  description: Tytuł oferty pracy.
+                company:
+                  type: string
+                  description: Nazwa firmy.
+                description:
+                  type: string
+                  description: Opis stanowiska.
+                location:
+                  type: string
+                  description: Lokalizacja pracy.
+                salary_from:
+                  type: integer
+                  description: Minimalne wynagrodzenie.
+                salary_to:
+                  type: integer
+                  description: Maksymalne wynagrodzenie.
+                tags:
+                  type: string
+                  description: Tagi związane z ofertą pracy.
+                posted_by_user_id:
+                  type: integer
+                  description: ID użytkownika tworzącego ofertę pracy.
+      responses:
+        201:
+          description: Oferta pracy została dodana pomyślnie.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Status powodzenia operacji.
+        400:
+          description: Nieprawidłowe dane w ciasteczkach.
+        403:
+          description: Brak uprawnień lub brak ciasteczka `user_id`.
+        422:
+          description: Błąd walidacji danych wejściowych.
+        500:
+          description: Wewnętrzny błąd serwera.
+
+
+
+  /jobs/filter:
+    post:
+      summary: Filtrowanie ofert pracy
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                location:
+                  type: string
+                salaryMin:
+                  type: integer
+                sortField:
+                  type: string
+                  enum: [created_at, salary_to]
+                sortOrder:
+                  type: string
+                  enum: [asc, desc]
+                searchTerm:
+                  type: string
+      responses:
+        200:
+          description: Lista przefiltrowanych ofert pracy.
+
+  /jobs/{id}:
+    get:
+      summary: Pobranie szczegółów oferty pracy
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Szczegóły oferty pracy.
+        404:
+          description: Oferta pracy nie została znaleziona.
+
+  /apply:
+    post:
+      summary: Składanie aplikacji na ofertę pracy
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: integer
+                jobId:
+                  type: integer
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                applyEmail:
+                  type: string
+                resume:
+                  type: string
+                  description: Plik CV zakodowany w Base64.
+      responses:
+        201:
+          description: Aplikacja została wysłana.
+        422:
+          description: Błąd walidacji.
+
+  /resume/{id}:
+    get:
+      summary: Pobranie CV użytkownika
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Pobranie CV w formacie Base64.
+        404:
+          description: CV nie zostało znalezione.

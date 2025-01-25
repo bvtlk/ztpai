@@ -499,6 +499,9 @@ document.addEventListener('DOMContentLoaded', function () {
             event.preventDefault();
 
             const formData = new FormData(postJobForm);
+            const userId = getUserId();
+
+            formData.append('posted_by_user_id', userId)
 
             fetch('/api/jobs', {
                 method: 'POST',

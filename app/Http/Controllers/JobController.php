@@ -80,12 +80,13 @@ class JobController extends Controller
             'salary_from' => 'required|integer|min:0',
             'salary_to' => 'required|integer|min:0',
             'tags' => 'required|string',
+            'posted_by_user_id' => 'required|integer|min:0',
         ]);
 
         $job = Job::create([
             'title' => $validated['title'],
             'description' => $validated['description'],
-            'posted_by_user_id' => $_COOKIE['user_id'],
+            'posted_by_user_id' => $validated['posted_by_user_id'],
             'company' => $validated['company'],
             'location' => $validated['location'],
             'salary_from' => $validated['salary_from'],

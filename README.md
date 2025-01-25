@@ -12,6 +12,7 @@ Projekt zaliczeniowy na ZTPAI, który umożliwia publikację ofert pracy oraz ap
 7. [Dokumentacja API (Swagger)](#7-dokumentacja-api-swagger)
 8. [Struktura projektu (Laravel)](#8-struktura-projektu-laravel)
 9. [Kluczowe funkcjonalności](#9-kluczowe-funkcjonalności)
+10. [ERD](#10-erd)
 
 ---
 
@@ -168,4 +169,8 @@ Najważniejsze katalogi i pliki:
     - Upload CV (Base64), zapis w bazie, podgląd w panelu organizacji.
 
 5. **Panel organizacji**:
-    - Przegląd aplikacji, wgląd w CV kandydatów (przechowywane w formie `longblob`).  
+    - Przegląd aplikacji, wgląd w CV kandydatów (przechowywane w formie `longblob`).
+
+## 10. ERD
+
+<img width="828" alt="image" src="https://github.com/user-attachments/assets/2674306c-6791-4ca3-8ca8-a88ce8df8450" />

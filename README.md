@@ -13,8 +13,8 @@ Projekt zaliczeniowy na ZTPAI, który umożliwia publikację ofert pracy oraz ap
 8. [Struktura projektu (Laravel)](#8-struktura-projektu-laravel)
 9. [Kluczowe funkcjonalności](#9-kluczowe-funkcjonalności)
 10. [ERD](#10-erd)
-11. [Wymagania projektu](#10-wymagania-projektu)
-12. [Uzasadnienie doboru architektury](#12-uzasadnienieddoboru-architektury)
+11. [Wymagania projektu](#11-wymagania-projektu)
+12. [Uzasadnienie doboru architektury](#12-uzasadnienie-doboru-architektury)
 
 ---
 

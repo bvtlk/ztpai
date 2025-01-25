@@ -1,0 +1,44 @@
+version: '3.8'
+services:
+    # Kontener z aplikacją Laravel
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: laravel-app
+        ports:
+            - "8000:80"          # http://localhost:8000 => kontener:80
+        volumes:
+            - ./:/var/www/html   # Montujemy katalog projektu do /var/www/html w kontenerze
+        depends_on:
+            - db
+
+    # Baza danych MySQL
+    db:
+        image: mysql:8.0
+        environment:
+            MYSQL_DATABASE: laravel
+            MYSQL_USER: laravel
+            MYSQL_PASSWORD: secret
+            MYSQL_ROOT_PASSWORD: rootsecret
+        ports:
+            - "3306:3306"
+        volumes:
+            - db_data:/var/lib/mysql
+
+
+    # phpMyAdmin - narzędzie do zarządzania bazą MySQL
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: phpmyadmin
+        depends_on:
+            - db
+        ports:
+            - "8080:80"          # http://localhost:8080
+        environment:
+            PMA_HOST: db
+            PMA_USER: laravel
+            PMA_PASSWORD: secret
+
+volumes:
+    db_data:

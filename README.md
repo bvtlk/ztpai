@@ -194,10 +194,10 @@ Poniżej znajduje się lista wymagań projektu oraz status ich realizacji:
 | **Autoryzacja użytkownika**         | ✅ Zrealizowano  |
 | **ORM/JPA/ODM**                     | ✅ Zrealizowano  |
 | **REST API / GraphQL**              | ✅ Zrealizowano  |
-| **Użycie API przez aplikację kliencką** | ✅ Zrealizowano |
+| **Użycie API przez aplikację kliencką** | ✅ Zrealizowano  |
 | **Brak replikacji kodu**            | ✅ Zrealizowano  |
 | **Czystość i przejrzystość kodu**   | ✅ Zrealizowano  |
-| **RabbitMQ, Kafka, Redis**          | ❌ Brak          |
+| **RabbitMQ, Kafka, Redis**          | ✅ Zrealizowano  |
 | **Kopia bazy danych / Migracje**    | ✅ Zrealizowano  |
 | **Dokumentacja Swaggera**           | ✅ Zrealizowano  |
 

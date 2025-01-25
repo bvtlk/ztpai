@@ -6,18 +6,27 @@ use App\Models\Application;
 use App\Models\Job;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class JobController extends Controller
 {
     public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory
     {
-        $locations = Job::distinct('location')->pluck('location');
-        $jobs = Job::all();
+        // Cache locations for 1 hour
+        $locations = Cache::remember('job_locations', 3600, function () {
+            return Job::distinct('location')->pluck('location');
+        });
+
+        // Cache jobs for 1 hour
+        $jobs = Cache::remember('all_jobs', 3600, function () {
+            return Job::all();
+        });
 
         $applications = [];
 
         if (session('user_id')) {
             $userId = session('user_id');
+            $jobsIdApplication = [];
 
             foreach ($jobs as $job) {
                 if ($job->posted_by_user_id == $userId) {
@@ -25,9 +34,12 @@ class JobController extends Controller
                 }
             }
 
-            $applications = Application::with('job:title,id')
-                ->whereIn('job_id', $jobsIdApplication ?? [])
-                ->get();
+            // Fetch applications with job details
+            $applications = Cache::remember("applications_user_{$userId}", 3600, function () use ($jobsIdApplication) {
+                return Application::with('job:title,id')
+                    ->whereIn('job_id', $jobsIdApplication ?? [])
+                    ->get();
+            });
         }
 
         return view('jobs.index', compact('locations', 'jobs', 'applications'));

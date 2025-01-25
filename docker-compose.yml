@@ -9,6 +9,7 @@ services:
             - ./:/var/www/html
         depends_on:
             - db
+            - redis
 
     # Nginx jako serwer WWW
     nginx:
@@ -45,6 +46,13 @@ services:
         volumes:
             - ./swagger.yaml:/swagger.yaml
 
+    redis:
+        image: redis:latest
+        ports:
+            - "6379:6379"
+        networks:
+            - app-network
+
     # phpMyAdmin - narzędzie do zarządzania bazą MySQL
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
@@ -57,6 +65,10 @@ services:
             PMA_HOST: db
             PMA_USER: laravel
             PMA_PASSWORD: secret
+
+networks:
+    app-network:
+        driver: bridge
 
 volumes:
     db_data:

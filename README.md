@@ -13,6 +13,8 @@ Projekt zaliczeniowy na ZTPAI, który umożliwia publikację ofert pracy oraz ap
 8. [Struktura projektu (Laravel)](#8-struktura-projektu-laravel)
 9. [Kluczowe funkcjonalności](#9-kluczowe-funkcjonalności)
 10. [ERD](#10-erd)
+11. [Wymagania projektu](#10-wymagania-projektu)
+12. [Uzasadnienie doboru architektury](#12-uzasadnienieddoboru-architektury)
 
 ---
 
@@ -174,3 +176,92 @@ Najważniejsze katalogi i pliki:
 ## 10. ERD
 
 <img width="828" alt="image" src="https://github.com/user-attachments/assets/2674306c-6791-4ca3-8ca8-a88ce8df8450" />
+
+## 11. Wymagania projektu
+Poniżej znajduje się lista wymagań projektu oraz status ich realizacji:
+
+| Wymaganie                           | Status          |
+|-------------------------------------|-----------------|
+| **README.MD**                       | ✅ Zrealizowano  |
+| **ERD**                             | ✅ Zrealizowano  |
+| **Złożoność bazy danych**           | ✅ Zrealizowano  |
+| **GIT**                             | ✅ Zrealizowano  |
+| **Realizacja tematu**               | ✅ Zrealizowano  |
+| **Wybór frameworka**                | ✅ Zrealizowano  |
+| **Uzasadnienie doboru architektury**| ✅ Zrealizowano  |
+| **Design**                          | ✅ Zrealizowano  |
+| **Responsywność**                   | ✅ Zrealizowano  |
+| **Autoryzacja użytkownika**         | ✅ Zrealizowano  |
+| **ORM/JPA/ODM**                     | ✅ Zrealizowano  |
+| **REST API / GraphQL**              | ✅ Zrealizowano  |
+| **Użycie API przez aplikację kliencką** | ✅ Zrealizowano |
+| **Brak replikacji kodu**            | ✅ Zrealizowano  |
+| **Czystość i przejrzystość kodu**   | ✅ Zrealizowano  |
+| **RabbitMQ, Kafka, Redis**          | ❌ Brak          |
+| **Kopia bazy danych / Migracje**    | ✅ Zrealizowano  |
+| **Dokumentacja Swaggera**           | ✅ Zrealizowano  |
+
+Legenda:  
+- ✅ - Wymaganie zostało zrealizowane  
+- ❌ - Wymaganie nie zostało zrealizowane
+
+## 12. Uzasadnienie doboru architektury
+Architektura projektu została zaprojektowana w oparciu o najlepsze praktyki tworzenia nowoczesnych aplikacji webowych. Poniżej przedstawiono kluczowe elementy i uzasadnienie ich wyboru:
+
+---
+
+#### 1. **Model MVC (Model-View-Controller)**  
+Architektura MVC (Model-View-Controller) pozwala na:
+- Rozdzielenie logiki biznesowej (Model), logiki kontrolera (Controller) oraz warstwy prezentacji (View).
+- Łatwiejsze zarządzanie kodem i rozwój aplikacji w przyszłości.
+- Czytelność i modularność kodu.
+
+Laravel jako framework naturalnie wspiera architekturę MVC, co pozwala na sprawne budowanie aplikacji.
+
+---
+
+#### 2. **REST API**  
+REST API zostało zaimplementowane w celu:
+- Zapewnienia łatwej komunikacji między różnymi komponentami aplikacji (np. frontendem i backendem).
+- Umożliwienia wykorzystania API w przyszłości przez inne aplikacje klienckie (np. mobilne, desktopowe).
+- Wsparcia standardowych metod HTTP (GET, POST, PUT, DELETE), co ułatwia integrację z zewnętrznymi systemami.
+
+---
+
+#### 3. **ORM (Eloquent)**  
+Eloquent ORM został wykorzystany do obsługi bazy danych:
+- Umożliwia mapowanie obiektowo-relacyjne, co upraszcza zarządzanie danymi.
+- Ułatwia wykonywanie operacji CRUD (Create, Read, Update, Delete).
+- Zapewnia możliwość wykorzystania relacji między tabelami (hasOne, hasMany, belongsTo, itp.).
+
+---
+
+#### 4. **Docker i konteneryzacja**  
+Docker został użyty w celu:
+- Izolacji środowiska aplikacji, co eliminuje problemy związane z różnicami w konfiguracji na różnych urządzeniach deweloperów.
+- Łatwego skalowania aplikacji w środowisku produkcyjnym.
+- Automatyzacji procesu budowania i uruchamiania aplikacji.
+
+---
+
+#### 5. **Swagger (OpenAPI)**  
+Swagger został wybrany jako narzędzie do dokumentacji API, ponieważ:
+- Umożliwia automatyczne generowanie i testowanie endpointów API.
+- Poprawia czytelność i dostępność dokumentacji dla deweloperów i testerów.
+- Integruje się z procesami CI/CD, zapewniając aktualność specyfikacji API.
+
+---
+
+#### 6. **Autoryzacja i role użytkowników**  
+Wdrożono system ról (organizacja i użytkownik), co:
+- Zapewnia kontrolę dostępu do funkcji aplikacji.
+- Pozwala na rozszerzalność w przyszłości (np. dodanie nowych ról).
+
+---
+
+#### 7. **Przyjęte dobre praktyki**  
+- **Czystość kodu**: Każda funkcja lub klasa realizuje jedną odpowiedzialność (SRP – Single Responsibility Principle).
+- **Brak replikacji kodu**: Powtarzalne elementy zostały wyodrębnione w komponenty lub helpery.
+- **Skalowalność**: Aplikacja została zaprojektowana tak, aby w przyszłości umożliwiać łatwe dodawanie nowych funkcji i integracji.
+
+---

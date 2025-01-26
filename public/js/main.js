@@ -116,16 +116,6 @@ document.addEventListener('DOMContentLoaded', function () {
         return cookies['username'] || '';
     }
 
-    function getUserFunction() {
-        const cookies = document.cookie.split('; ').reduce((prev, current) => {
-            const [name, value] = current.split('=');
-            prev[name] = value;
-            return prev;
-        }, {});
-
-        return cookies['role_id'] || '';
-    }
-
     function getUserId() {
         const cookies = document.cookie.split('; ').reduce((prev, current) => {
             const [name, value] = current.split('=');
@@ -134,15 +124,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }, {});
 
         return cookies['user_id'] || '';
-    }
-
-    function fileToBase64(file) {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = () => resolve(reader.result);
-            reader.onerror = error => reject(error);
-        });
     }
 
     function applyFilters() {
@@ -543,7 +524,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
                 return response.json();
             })
-            .then(data => {
+            .then(_ => {
                 alert('User registered successfully!');
                 signupModal.style.display = 'none';
                 buttonHeader.forEach(el => el.style.display = 'block');

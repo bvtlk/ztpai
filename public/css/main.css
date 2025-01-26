@@ -13,7 +13,7 @@ body {
 
 .container {
     width: 100%;
-    max-width: 1200px; /* max-width for large screens */
+    max-width: 1200px;
     margin: auto;
     overflow: hidden;
 }
@@ -23,9 +23,9 @@ body {
     min-height: 450px;
     color: white;
     padding: 20px;
-    /* Added this line */
     background-size: cover;
-    /*background: url('/img/main_banner.png') no-repeat center #f4f4f4;*/
+    background: #f4f4f4 url('../img/main_banner.png') no-repeat center;
+    background-size: cover;
 }
 
 .header .right {
@@ -43,36 +43,13 @@ body {
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
-    margin-top: 10px; /* add margin for smaller screens */
+    margin-top: 10px;
     background-color: #555555;
 }
 
 .text-container {
     position: relative;
 }
-
-/*@media (max-width: 444px) {*/
-/*    .search-container {*/
-/*        min-width: auto !important;*/
-/*    }*/
-/*}*/
-
-/*@media (min-width: 660px) {*/
-/*    .button {*/
-/*        margin-top: 0;*/
-/*    }*/
-
-/*    .header .right {*/
-/*        position: absolute;*/
-/*        top: 50%;*/
-/*        right: 20px;*/
-/*        transform: translateY(-50%);*/
-/*    }*/
-
-/*    .header {*/
-/*        height: 10vh; !* Adjust this value as needed *!*/
-/*    }*/
-/*}*/
 
 .button-container {
     position: absolute;
@@ -133,7 +110,7 @@ body {
 }
 
 .button-post-offer, .logout {
-    background-color: #4E9CAF; /* for instance */
+    background-color: #4E9CAF;
     color: white;
     border-radius: 15px;
     font-weight: bold;
@@ -171,7 +148,7 @@ body {
     font-size: 4.5vw;
     margin-bottom: 20px;
     font-weight: 1000;
-    text-shadow: 0px 0px 20px rgba(255, 255, 255, 1), 0px 0px 20px rgba(255, 255, 255, 1), 0px 0px 20px rgba(255, 255, 255, 1);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1);
 }
 
 .text-container input[type="text"] {
@@ -194,14 +171,6 @@ body {
     box-sizing: border-box;
 }
 
-search-container span {
-    color: black;
-}
-
-search-container input {
-    padding-left: 20px;
-}
-
 #search-bar {
     padding: 10px 20px 10px 40px;
 }
@@ -218,8 +187,7 @@ search-container input {
 }
 
 .search-input {
-    padding: 10px;
-    padding-left: 30px;
+    padding: 10px 10px 10px 30px;
     font-size: 17px;
     border: none;
     color: black;
@@ -248,7 +216,6 @@ search-container input {
     border-radius: 20px;
     font-size: 50px;
     color: black;
-    margin: auto;
     box-sizing: border-box;
     margin: 5px;
 }
@@ -265,8 +232,7 @@ search-container input {
 }
 
 .filter-input {
-    padding: 10px;
-    padding-left: 30px;
+    padding: 10px 10px 10px 30px;
     font-size: 17px;
     border: none;
     color: black;
@@ -385,30 +351,23 @@ tr:hover .apply_button {
     padding: 40px;
     border: 1px solid #888;
     width: 80%;
-    max-width: 600px; /* Maximum width for larger screens */
+    max-width: 600px;
     border-radius: 15px;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.19), 0px 6px 6px rgba(0, 0, 0, 0.23);
-    box-sizing: border-box; /* Ensure padding and border are included in element's total width and height */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    box-sizing: border-box;
 }
-
-/*@media (max-width: 600px) {*/
-/*    .modal-content {*/
-/*        width: 95%; !* Adjust modal width for smaller screens *!*/
-/*        padding: 20px; !* Adjust padding for smaller screens *!*/
-/*    }*/
-/*}*/
 
 .table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
-    box-sizing: border-box; /* Ensure padding and border are included in element's total width and height */
+    box-sizing: border-box;
 }
 
 .table td {
     padding: 10px;
     border: 1px solid #ddd;
-    box-sizing: border-box; /* Ensure padding and border are included in element's total width and height */
+    box-sizing: border-box;
 }
 
 .close, .close-details, .close-apply, .close-organization {
@@ -420,7 +379,6 @@ tr:hover .apply_button {
 }
 
 .close-organization:hover,
-close-organization:focus,
 .close-apply:hover,
 .close-apply:focus,
 .close-details:hover,
@@ -545,8 +503,6 @@ table tr:hover .details-button {
     background-color: #FF5722;
 }
 
-/* Mobile Styles */
-/* Mobile Styles */
 @media (max-width: 600px) {
     .container {
         padding: 0 10px;
@@ -700,7 +656,6 @@ table tr:hover .details-button {
     cursor: pointer;
 }
 
-/* Styles for form inputs and labels */
 .modal-content form label {
     font-weight: bold;
     margin-top: 20px;
@@ -712,10 +667,10 @@ table tr:hover .details-button {
     margin-top: 10px;
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ddd; /* Add border for better visibility */
+    border: 1px solid #ddd;
     border-radius: 5px;
     width: 100%;
-    box-sizing: border-box; /* Ensure padding and border are included in element's total width and height */
+    box-sizing: border-box;
     transition: border .3s ease;
 }
 

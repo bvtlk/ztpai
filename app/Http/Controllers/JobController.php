@@ -42,7 +42,7 @@ class JobController extends Controller
             });
         }
 
-        return view('jobs.index', compact('locations', 'jobs', 'applications'));
+        return view('index', compact('locations', 'jobs', 'applications'));
     }
 
 

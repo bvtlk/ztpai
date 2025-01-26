@@ -382,7 +382,7 @@ document.addEventListener('DOMContentLoaded', function () {
         function fileToBase64(file) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
-                reader.onload = () => resolve(reader.result.split(',')[1]); // Usuwa prefix Base64
+                reader.onload = () => resolve(reader.result.split(',')[1]);
                 reader.onerror = error => reject(error);
                 reader.readAsDataURL(file);
             });
@@ -411,60 +411,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
     }
-
-    // document.addEventListener('DOMContentLoaded', function () {
-    //     const buttonContainer = document.querySelector('.button-container');
-    //     const buttonPostJobOffer = document.querySelector('#postJobButton');
-    //     const cookies = document.cookie.split('; ').reduce((prev, current) => {
-    //         const [name, value] = current.split('=');
-    //         prev[name] = value;
-    //         return prev;
-    //     }, {});
-    //
-    //     const userRoleId = parseInt(cookies['role_id'] || '0', 10);
-    //     const userId = cookies['user_id'];
-    //
-    //     console.log(userId);
-    //
-    //     if (userId) {
-    //         if (userRoleId === 1) {
-    //             buttonPostJobOffer.textContent = 'Post a Job';
-    //             buttonPostJobOffer.addEventListener('click', function () {
-    //                 alert('Opening post job offer modal...');
-    //             });
-    //         } else if (userRoleId === 2) {
-    //             buttonPostJobOffer.style.display = 'none';
-    //         }
-    //
-    //         buttonContainer.style.display = 'none'; // Ukrycie przycisków logowania i rejestracji
-    //         const logoutButton = document.createElement('button');
-    //         logoutButton.textContent = 'Logout';
-    //         logoutButton.classList.add('button', 'button-post-offer');
-    //         logoutButton.addEventListener('click', function () {
-    //             fetch('/logout', {
-    //                 method: 'POST',
-    //                 headers: {
-    //                     'Content-Type': 'application/x-www-form-urlencoded',
-    //                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
-    //                 },
-    //             })
-    //                 .then(response => {
-    //                     if (response.ok) {
-    //                         window.location.reload();
-    //                     } else {
-    //                         alert('Failed to logout.');
-    //                     }
-    //                 })
-    //                 .catch(error => console.error('Error:', error));
-    //         });
-    //         document.querySelector('.fixed-button-container').appendChild(logoutButton);
-    //     } else {
-    //         buttonPostJobOffer.textContent = 'Organization sign in';
-    //         buttonPostJobOffer.addEventListener('click', function () {
-    //             alert('Opening organization sign in modal...');
-    //         });
-    //     }
-    // });
 
     const modal = document.getElementById('loginModal');
     const buttonHeader = document.querySelectorAll('.button-container');
@@ -520,33 +466,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 .catch(error => console.error('Error:', error));
         });
     }
-
-    // Otwarcie modalu rejestracji organizacji
-    // if (buttonPostJobOffer) {
-    //     buttonPostJobOffer.addEventListener('click', function () {
-    //         const userId = getUserId();
-    //         if (userId) {
-    //             fetch('app/api/logout.php', {
-    //                 method: 'POST',
-    //                 headers: {
-    //                     'Content-Type': 'application/x-www-form-urlencoded'
-    //                 },
-    //                 body: 'logout=1'
-    //             })
-    //                 .then(response => response.json())
-    //                 .then(data => {
-    //                     if (data.status === 'success') {
-    //                         window.location.reload();
-    //                     } else {
-    //                         alert('Failed to logout.');
-    //                     }
-    //                 })
-    //                 .catch(error => console.error('Error:', error));
-    //         } else {
-    //             toggleModal(organizationSignupModal, 'block', 'none');
-    //         }
-    //     });
-    // }
 
     closeOrganization.addEventListener('click', function () {
         organizationSignupModal.style.display = 'none';

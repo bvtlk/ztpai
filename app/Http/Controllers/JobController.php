@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Application;
 use App\Models\Job;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
 class JobController extends Controller
 {
-    public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory
+    public function index(): View|\Illuminate\Foundation\Application|Factory
     {
         // Cache locations for 1 hour
         $locations = Cache::remember('job_locations', 3600, function () {
@@ -71,7 +74,7 @@ class JobController extends Controller
         }
     }
 
-    public function show($id)
+    public function show($id): JsonResponse
     {
         $job = Job::find($id);
 
@@ -82,7 +85,7 @@ class JobController extends Controller
         return response()->json($job);
     }
 
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
@@ -114,7 +117,7 @@ class JobController extends Controller
         return response()->json(['error' => 'Failed to post job'], 500);
     }
 
-    public function apply(Request $request)
+    public function apply(Request $request): RedirectResponse
     {
         $request->validate([
             'first_name' => 'required|string|max:255',

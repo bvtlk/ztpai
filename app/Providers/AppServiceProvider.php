@@ -10,19 +10,18 @@ class AppServiceProvider extends ServiceProvider
 {
     public const HOME = '/home';
 
-    public function boot()
+    public function boot(): void
     {
         parent::boot();
         EncryptCookies::except(['user_id', 'role_id', 'username']);
     }
 
-    public function map()
+    public function map(): void
     {
         $this->mapApiRoutes();
-//        $this->mapWebRoutes();
     }
 
-    protected function mapApiRoutes()
+    protected function mapApiRoutes(): void
     {
         Route::middleware('api')
             ->prefix('api')

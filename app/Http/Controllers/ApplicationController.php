@@ -6,11 +6,12 @@ use App\Models\Application;
 use App\Models\JobApplication;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ApplicationController extends Controller
 {
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
         $application = JobApplication::create([
             'user_id' => $request['userId'],
@@ -28,7 +29,7 @@ class ApplicationController extends Controller
         return response()->json(['success' => false, 'error' => 'Failed to save application'], 500);
     }
 
-    public function getResume($id): \Illuminate\Http\JsonResponse
+    public function getResume($id): JsonResponse
     {
         $application = Application::findOrFail($id);
 

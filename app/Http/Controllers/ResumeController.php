@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\Application;
 
 class ResumeController extends Controller
 {
-    public function show($id)
+    public function show($id): JsonResponse
     {
         $application = Application::find($id);
 

@@ -15,7 +15,7 @@ Projekt zaliczeniowy na ZTPAI, który umożliwia publikację ofert pracy oraz ap
 10. [ERD](#10-erd)
 11. [Wymagania projektu](#11-wymagania-projektu)
 12. [Uzasadnienie doboru architektury](#12-uzasadnienie-doboru-architektury)
-13. [Zrzuty wyglądu aplikacji](#13-zrzuty-wygladu-aplikacji)
+13. [Zrzuty wyglądu aplikacji](#13-zrzuty-wyglądu-aplikacji)
 
 ---
 

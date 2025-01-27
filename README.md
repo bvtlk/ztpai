@@ -15,6 +15,7 @@ Projekt zaliczeniowy na ZTPAI, który umożliwia publikację ofert pracy oraz ap
 10. [ERD](#10-erd)
 11. [Wymagania projektu](#11-wymagania-projektu)
 12. [Uzasadnienie doboru architektury](#12-uzasadnienie-doboru-architektury)
+13. [Zrzuty wyglądu aplikacji](#13-zrzuty-wygladu-aplikacji)
 
 ---
 
@@ -265,3 +266,47 @@ Wdrożono system ról (organizacja i użytkownik), co:
 - **Skalowalność**: Aplikacja została zaprojektowana tak, aby w przyszłości umożliwiać łatwe dodawanie nowych funkcji i integracji.
 
 ---
+
+## 13. Zrzuty wyglądu aplikacji
+
+### Strona głowna
+
+<img width="1512" alt="image" src="https://github.com/user-attachments/assets/ded438dd-7039-4602-94bd-4bda5e1c2c46" />
+<img width="344" alt="image" src="https://github.com/user-attachments/assets/e4e4c047-21af-4345-b94a-acf9c03ed084" />
+
+### Logowanie
+
+<img width="1512" alt="image" src="https://github.com/user-attachments/assets/01679d82-7d4b-4bfe-846b-8fc41a911b48" />
+<img width="346" alt="image" src="https://github.com/user-attachments/assets/68ca2eec-d060-4195-afc9-b8fe8a7edb7a" />
+
+### Rejestracja
+
+<img width="1512" alt="image" src="https://github.com/user-attachments/assets/1ef1f3e9-4426-406b-b1cb-ca39155f57dd" />
+<img width="355" alt="image" src="https://github.com/user-attachments/assets/384435d7-746d-406f-a9ca-c6daaf7b9cb1" />
+
+### Szegóły oferty pracy
+
+<img width="1512" alt="image" src="https://github.com/user-attachments/assets/11c4397b-0eaa-49e0-8f40-11eb4b32be51" />
+<img width="345" alt="image" src="https://github.com/user-attachments/assets/2ba068d4-28f4-4142-b999-0e0340c38e55" />
+
+### Aplikowanie na ofertę
+
+<img width="1512" alt="image" src="https://github.com/user-attachments/assets/22aa5c9c-c1a6-4bc8-8690-8c000de90339" />
+<img width="353" alt="image" src="https://github.com/user-attachments/assets/dd713717-d8e8-4358-99b2-b44591700068" />
+
+### Przeglądanie aplikacji
+
+<img width="1511" alt="image" src="https://github.com/user-attachments/assets/115f0ab7-1b43-4bfb-a4d2-0e957a9cb70d" />
+<img width="351" alt="image" src="https://github.com/user-attachments/assets/8b37648d-1011-4883-beed-2ed07574f984" />
+
+### Tworzenie oferty pracy
+
+<img width="1512" alt="image" src="https://github.com/user-attachments/assets/c14f388f-4965-44d4-8936-6d9fa24cf415" />
+<img width="356" alt="image" src="https://github.com/user-attachments/assets/9a7da174-d744-4d91-a905-4d35d1f871cb" />
+
+
+
+
+
+
+
